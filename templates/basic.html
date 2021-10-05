@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁</title>
+</head>
+<style>
+    .fun{
+        margin : auto;
+        font-weight: bold;
+        color:white;
+        text-align : right;  
+        vertical-align: 50% ;
+        background-color: rgb(213, 144, 41);
+    }
+
+    #staffLogin_data{
+        color:white;
+        margin : auto;
+        margin-top : 10px ;
+        text-align: center;
+        background-color: rgb(95, 48, 48);
+        font-size: 15px;
+    }
+
+    input[type = "button"]
+    {
+        border:0;
+        background-color:#345096;
+        color:#fff;border-radius:10px;
+}
+    input[type = "button"]:hover
+    {
+        color:#003C9D;
+        background-color:#fff;
+        border:2px #003C9D solid;
+}
+
+</style>
+
+
+<body>
+    
+    <!-- div > 標籤區塊，可以加入id，class，style -->
+    <div class="fun">
+        <!-- h2 > 字體大小 -->
+        <h2>
+            <input type = "button" onclick="location.href='/index/'" value="回至首頁" style="width:65px;height:30px;">&nbsp;
+        {% if staff_Login_Data.login == 1 %}
+            <input type = "button" onclick="location.href='/staff_Logout/'" value="職員登出" style="width:65px;height:30px;">&nbsp;&nbsp;&nbsp;
+        {% else %}
+            <input type = "button" onclick="location.href='/staff_Login/'" value="職員登入" style="width:65px;height:30px;">&nbsp;&nbsp;&nbsp;
+        {% endif %}
+        
+        </h2>
+
+    </div>
+
+    <div id="staffLogin_data">
+        <!-- 資料取自views > login > staff_Login_Data，判斷是否有登入 -->
+        
+        <!-- font > 文字設定，有屬性，顏色，粗細等等... -->
+        <h2>
+            登入姓名 : {{ staff_Login_Data.login_name }} <br>
+            登入帳號 : {{ staff_Login_Data.login_account }}<br>
+            所屬部門 : {{ staff_Login_Data.login_subjection_depar }}<br>
+
+        </h2>
+    </div>
+    
+    {% block content %}
+    {% endblock %}
+
+
+
+
+
+
+</body>
+
+</html>

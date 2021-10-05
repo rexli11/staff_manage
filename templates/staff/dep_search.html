@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>職員個資更新</title>
+
+    <!-- javascript提示框語法
+    <script> + dbConfirm('myMsg')" -->
+    <script>
+        function dbConfirm(myMsg) {
+            return confirm(myMsg)
+        }
+    </script>
+    {% extends 'basic.html' %}
+</head>
+
+<body>
+    <!-- 模板區塊 -->
+    {% block content %}
+
+        <input type=button onclick="location.href='/staff_index/'" value="回到職員管理主頁">
+        <form method="POST" action="//">
+        <input type=
+
+        </form>
+    {% endblock %}
+</body>
+
+</html>

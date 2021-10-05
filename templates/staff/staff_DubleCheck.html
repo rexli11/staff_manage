@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新職員個資建立確認</title>
+    <style>
+        .label { 
+            width:150px; 
+            text-align:left; 
+            margin : auto;
+        }
+        .text{
+            width:150px; 
+            text-align:right; 
+            margin : auto;
+        }
+        input[type = "submit"]
+        {
+            border:0;
+            background-color:#5c0bf1;
+            color:#fff;border-radius:10px;
+        }
+        input[type = "submit"]:hover
+        {
+            color:#003C9D;
+            background-color:#fff;
+            border:2px #003C9D solid;
+        }
+        .create_dbcheck
+        {
+            height:800px;
+            color:white;
+            margin : auto;
+            margin-top : 10px ;
+            text-align: center;
+            background-color: rgb(151, 138, 138);
+            font-size: 15px;
+        }
+        #word{
+            color:rgb(191, 228, 170);
+        }
+    </style>
+
+    <!-- 添加至basic模板中 -->
+    {% extends 'basic.html' %}
+</head>
+
+
+
+<body>
+    <!-- 模板區塊 -->
+    {% block content %}
+    <div class="create_dbcheck">
+    <!-- 檢查資料型態 -->
+    <!-- {{ data }} -->
+    <input type=button onclick = "location.href='/staff_index/'" value="回到職員管理主頁" style="width:150px;height:30px;">
+    <form method="POST" action="/staff_CreateConfirm/">
+    {% csrf_token %}
+    <h2 id="word">職員帳號建立</h2>
+    <h4 id="word">請確認填寫內容是否正確</h4>
+    <!-- data來源 > staff_DubleCheck > data -->
+        <!-- text > 輸入框，value > create沒有值 -->
+        <div class="label"><label for="account">帳號 : </label></div> 
+        <div class="text"><input type="text" name="account" value="{{ data.account }}"><br></div>
+        <div class="label"><label for="name">真實姓名 : </label></div> 
+        <div class="text"><input type="text" name="name" value="{{ data.name }}"><br></div>
+        <div class="label"><label for="password">密碼 : </label></div> 
+        <div class="text"><input type="text" name="password" value="{{ data.password }}"><br></div>
+        <div class="label"><label for="privacy_mail">私人信箱 : </label></div> 
+        <div class="text"><input type="text" name="privacy_mail" value="{{ data.privacy_mail }}"><br></div>
+        <div class="label"><label for="mobile_phine">手機號碼 : </label></div> 
+        <div class="text"><input type="text" name="mobile_phine" value="{{ data.mobile_phine }}"><br></div>
+        <div class="label"><label for="addr">地址 : </label></div> 
+        <div class="text"><input type="text" name="addr" value="{{ data.addr }}"><br></div>
+        <div class="label"><label for="emergency_contact_name">緊急連絡人姓名 : </label></div> 
+        <div class="text"><input type="text" name="emergency_contact_name" value="{{ data.emergency_contact_name }}"><br></div>
+        <div class="label"><label for="emergency_contact_tel">緊急連絡人電話 : </label></div> 
+        <div class="text"><input type="text" name="emergency_contact_tel" value="{{ data.emergency_contact_tel }}"><br></div>
+        <div class="label"><label for="subjection_depar">所屬部門 : </label></div> 
+        <div class="text"><input type="text" name="subjection_depar" value="{{ data.subjection_depar }}"><br></div>
+        <div class="label"><label for="job_title">職稱 : </label></div> 
+        <div class="text"><input type="text" name="job_title" value="{{ data.job_title }}"><br></div>
+        <div class="label"><label for="depar_director">所屬主管 : </label></div> 
+        <div class="text"><input type="text" name="depar_director" value="{{ data.depar_director }}"><br><br></div>
+        <!-- 按下submit後，會將以上都打包，透過post傳送至staff_CreateConfirm -->
+        <input type="submit" value="填寫完成確認送出" style="width:150px;height:30px;">&nbsp;
+        <input type="button" onclick="location.href='/staff_Create/'" value="取消重填" style="width:150px;height:30px;">
+    </div>
+    {% endblock %}
+    </form>
+    
+</body>
+
+</html>

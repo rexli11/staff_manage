@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>職員管理頁面</title>
+    <style>
+        .staff_index{
+            height:800px;
+            color:white;
+            margin : auto;
+            margin-top : 10px ;
+            text-align: center;
+            background-color: rgb(151, 138, 138);
+            font-size: 15px;
+    }
+        input[type = "button"]{
+            border:0;
+            background-color:#345096;
+            color:rgb(153, 17, 17);border-radius:10px;
+}
+
+        input[type = "button"]:hover{
+            color:#003C9D;
+            background-color:#fff;
+            border:2px #003C9D solid;
+}
+
+    </style>
+
+    <!-- 添加至basic模板中 -->
+    {% extends 'basic.html' %}
+
+</head>
+
+
+<body>
+    <!-- 模板區塊 -->
+    {% block content %}
+    <div class="staff_index">
+    <h1>歡迎進入職員管理頁面</h1>
+    <h3>管理職員資料</h3>
+    
+    <!-- 取自staff_index的show={}，判斷部門別顯示功能 -->
+    {% if show.data == 0 %}
+    <input type=button onclick="location.href='/staff_Create/'" value="新增職員" style="width:150px;height:30px;">
+    <p></p>
+    {% elif show.data == 1 %}
+    <input type=button onclick="location.href='/staff_Create/'" value="新增職員" style="width:150px;height:30px;">
+    <p></p> 
+    {% elif show.data == 2 %}  
+    <input type=hidden onclick="" value="">
+    <p></p>  
+    {% else %}
+    <input type=hidden onclick="" value="">
+    <p></p>
+    {% endif %}       
+
+    <input type=button onclick="location.href='/staff_Revise/'" value="職員個人資料修改" style="width:150px;height:30px;">
+    <p></p>
+
+    {% if show.data == 0 %}
+    <input type=button onclick="location.href='/staff_ListAll/'" value="所有職員管理" style="width:150px;height:30px;">
+    <p></p>
+    {% elif show.data == 1 %}
+    <input type=button onclick="location.href='/dep_Staff_ListAll/'" value="部門職員管理" style="width:150px;height:30px;">
+    <p></p>
+    {% elif show.data ==  2 %}
+    <input type=button onclick="location.href='/dep_Staff_ListAll/'" value="部門職員管理" style="width:150px;height:30px;">
+    <p></p>
+    {% else %}
+    <input type=hidden onclick="" value="">
+    <p></p>
+    {% endif %}
+
+    </div>
+    {% endblock %}
+</body>
+
+</html>

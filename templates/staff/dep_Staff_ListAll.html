@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>所有職員列表</title>
+
+    <!-- javascript提示框語法
+    <script> + dbConfirm('myMsg')" -->
+    <script>
+        function dbConfirm(myMsg) {
+            return confirm(myMsg)
+        }
+    </script>
+    <!-- 添加至basic模板中 -->
+    {% extends 'basic.html' %}
+</head>
+
+
+<body>
+    <!-- 模板區塊 form method="POST" action="index"-->
+    {% block content %}
+    <input type=button onclick="location.href='/staff_index/'" value="回到職員管理主頁" style="width:150px;height:30px;">
+    <h1>歡迎進入部門管理職員列表
+
+    </h1>
+    <h3>職員資料管理</h3>
+    <!--table > 表格，border > 邊線粗細  -->
+    <table border="1">
+        <!-- tr > 橫列，td > 直行-->
+        <tr>
+            <!-- th > 標題欄位 -->
+            <th>編號</th>
+            <!-- <th>資料庫編碼</th> -->
+            <th>帳號</th>
+            <th>姓名</th>
+            <th>密碼</th>
+            <th>私人信箱</th>
+            <th>公司信箱</th>
+            <th>手機號碼</th>
+            <th>地址</th>
+            <th>緊急連絡人</th>
+            <th>緊急聯絡人電話</th>
+            <th>狀態</th>
+            <th>分類</th>
+            <th>所屬部門</th>
+            <th>職稱</th>
+            <th>所屬主管</th>
+            <th>權控等級</th>
+            <th>特殊事項備註</th>
+            <th>正常該月時數</th>
+            <th>該月總計時數</th>
+            <th>特休假</th>
+            <th>病、事假</th>
+            <th>超時時數</th>
+            <th>管理功能</th>
+        </tr>
+        <tr>
+            <th>Number</th>
+            <!-- <th>UID</th> -->
+            <th>Account</th>
+            <th>Name</th>
+            <th>Password</th>
+            <th>Privacy_mail</th>
+            <th>Mail</th>
+            <th>Mobile_phine</th>
+            <th>Addr</th>
+            <th>Emergency_contact_name</th>
+            <th>Emergency_contact_tel</th>
+            <th>Status</th>
+            <th>Category</th>
+            <th>Subjection_depar</th>
+            <th>Job_title</th>
+            <th>Depar_director</th>
+            <th>Level</th>
+            <th>Note</th>
+            <th>Nomal_hour_month</th>
+            <th>Total_hour_month</th>
+            <th>Official_leave</th>
+            <th>Annual_ Sick_ leave</th>
+            <th>Overtime_hour</th>
+            <th>Man_function</th>
+
+        </tr>
+        {% for i in dep_Staff_ListAll %}
+        <tr>
+            <!-- td > 直行 -->
+            <!-- {{ forloop.counter }} > html的for迴圈 -->
+            <td>{{ forloop.counter }}</td>
+            <!-- <td>{{i.0}}</td> -->
+            <td>{{i.1}}</td>
+            <td>{{i.2}}</td>
+            <td>{{i.3}}</td>
+            <td>{{i.4}}</td>
+            <td>{{i.5}}</td>
+            <td>{{i.6}}</td>
+            <td>{{i.7}}</td>
+            <td>{{i.8}}</td>
+            <td>{{i.9}}</td>
+            <td>{{i.10}}</td>
+            <td>{{i.11}}</td>
+            <td>{{i.12}}</td>
+            <td>{{i.13}}</td>
+            <td>{{i.14}}</td>
+            <td>{{i.15}}</td>
+            <td>{{i.16}}</td>
+            <td>{{i.17}}</td>
+            <td>{{i.18}}</td>
+            <td>{{i.19}}</td>
+            <td>{{i.20}}</td>
+            <td>{{i.21}}</td>
+            <!-- 呼叫javascript中提示框 -->
+            <td><a href="\dep_all_staff_Revise\{{i.1}}">職員資料修改</a></td>
+        </tr>
+        <!-- 迴圈結束 -->
+        {% endfor %}
+    </table>
+    {% endblock %}
+</body>
+
+</html>

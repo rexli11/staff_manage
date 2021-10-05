@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>職員登入</title>
+
+    <!-- javascript提示框語法
+    <script> + dbConfirm('myMsg')" -->
+    <script>
+        function dbConfirm(myMsg) {
+            return confirm(myMsg)
+        }
+    </script>
+
+    <style>
+        #login{
+            width : 300px;
+            color:white;
+            margin : auto;
+            margin-top : 20px ;
+            text-align : center;
+            vertical-align : 50%;
+            background-color : black;
+            border-style : groove;
+        }
+
+        #formation{
+            width : 300px;
+            margin-bottom : 100px;
+            margin : auto;
+            font-weight: bold;
+            color:white;
+            text-align : center;  
+            vertical-align: 50% ;
+            background-color : rgb(250, 145, 7);
+        }
+
+        #submit{
+            text-align : center; 
+        }
+
+        input{
+            border:0;
+            background-color:#003C9D;
+            color:#fff;border-radius:10px;
+        }
+        input:hover{
+            color:#003C9D;
+            background-color:#fff;
+            border:2px #003C9D solid;
+        }
+
+        input[type="text"]{
+            border:0;
+            background-color:#e9eaec;
+            color:rgb(17, 16, 16);border-radius:10px;
+        }
+        input[type="text"]:hover{
+            color:#0f0f0f;
+            background-color:#fff;
+            border:10px #f50404 solid;
+        }
+
+
+    </style>
+
+
+
+
+
+</head>
+
+
+
+<body>
+    <!-- <input type=button onclick="location.href = '/staff_index/'" value="回到職員管理主頁"> -->
+
+    <form method="POST" action="/staff_Login/">
+        {% csrf_token %}
+        <h2 id = "formation">請填寫登錄資訊</h2>
+        <h3 id = "login">帳號 <input type="text" placeholder="請輸入帳號" name="account" value="{{ data.account }}" style="width:200px;height:20px;">
+        <p></p>
+        姓名 <input type="text" placeholder="請輸入中文姓名" name="name" value="{{ data.name }}" style="width:200px;height:20px;">
+        <p></p>
+        密碼 <input type="text" placeholder="密碼需區分大小寫" name="password" value="{{ data.password}}" style="width:200px;height:20px;">
+        <p></p>
+        </h3>
+        <!-- 搭配javascript動態提示框做Dbcheck -->
+        
+
+        <h3 id="submit"><input onclick='return dbConfirm("確定登入嗎?")' type="submit" value="點擊登入" style="width:70px;height:35px;"></h3>
+    </form>
+</body>
+
+</html>
